@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - AERP</title>
+	<link rel="stylesheet" href="~/css/site.css" />
+
+	<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="~/css/site.css"/>
+	<link rel="stylesheet" href="~/css/main.min.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap-touch-carousel/css/bootstrap-touch-carousel.css"/>
+
+	<link rel="stylesheet" href="~/css/kendo.common-bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/kendo.bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/kendo.dataviz.min.css" />
+	<link rel="stylesheet" href="~/css/kendo.dataviz.bootstrap.min.css" />
+
+	<script src="~/lib/jquery/jquery.js"></script>
+	<script src="~/lib/bootstrap/js/bootstrap.js"></script>
+	<script src="~/lib/hammer.js/hammer.js"></script>
+	<script src="~/lib/bootstrap-touch-carousel/js/bootstrap-touch-carousel.js"></script>
+
+	<script src="~/lib/kendo-ui/kendo.all.min.js"></script>
+	@RenderSection("scripts", required: false)
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$(".nav a").on("click", function () {
+				$(".nav").find(".active").removeClass("active");
+				$(this).parent().addClass("active");
+			});
+
+			var url = window.location.pathname;
+			$('.nav a[href="' + url + '"]').parent().addClass('active');
+		});
+	</script>
+</head>
+<body>
+	<div class="navbar navbar-default navbar-static-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+				<a class="navbar-brand"><img height="48" alt="Brand" src="~/images/logo_small_t.png"></a>
+			</div>
+			<div class="collapse navbar-collapse" id="#navbar-ex-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-user"></span>
+							<strong>Nombre</strong>
+							<span class="glyphicon glyphicon-chevron-down"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<div class="navbar-login">
+									<div class="row">
+										<div class="col-lg-4">
+											<p class="text-center">
+												<span class="glyphicon glyphicon-user icon-size"></span>
+											</p>
+										</div>
+										<div class="col-lg-8">
+											<p class="text-left"><strong>Nombre Apellido</strong></p>
+											<p class="text-left small">correoElectronico@email.com</p>
+											<p class="text-left">
+												<a href="#" class="btn btn-primary btn-block btn-sm">Actualizar Datos</a>
+											</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<div class="navbar-login navbar-login-session">
+									<div class="row">
+										<div class="col-lg-12">
+											<p>
+												<a href="#" class="btn btn-danger btn-block">Cerrar Sesion</a>
+											</p>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right navbar-collapse-right-menu">
+					<li >
+						@Html.ActionLink("Статистика", "Index", "Home")
+					</li>
+					<li>
+						@Html.ActionLink("Склад", "Index", "Products")
+					</li>
+					<li>
+						<a href="#">Закупки</a>
+					</li>
+					<li>
+						<a href="#">Продажи</a>
+					</li>
+					<li>
+						<a href="#">Розница</a>
+					</li>
+					<li>
+						<a href="#">Производство</a>
+					</li>
+					<li>
+						<a href="#">Справочники</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="hidden-xs section">
+		@RenderBody()
+	</div>
+</body>
+</html>
