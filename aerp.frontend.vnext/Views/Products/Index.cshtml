@@ -1,0 +1,230 @@
+﻿@model aerp.frontend.vnext.Models.Production.ProductsModel
+
+@{
+	Layout = "~/Views/Store/_Shared.cshtml";
+	ViewBag.Title = "Товары";
+}
+
+@section StorePageHeader{
+	<h1>
+		<small>Товары</small>
+	</h1>
+}
+
+@section StoreRightPanel{
+	<ul class="nav nav-list">
+		<li class="nav-header">Товарные группы</li>
+		<li class="divider"></li>
+	</ul>
+	<ul class="nav-leftside nav-list" id="product-group-treeview">
+		<li>
+			<a href="#">Товарная группа <span class="badge badge-left-span">42</span></a>
+		</li>
+		<li>
+			<a href="#">Товарная группа <span class="badge badge-left-span">9</span></a>
+			<ul class="nav-leftside nav-list">
+				<li>
+					<a href="#">Товарная группа <span class="badge badge-left-span">11</span></a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Товарная группа <span class="badge badge-left-span">0</span></a>
+		</li>
+	</ul>
+}
+
+<div class="dataTables_wrapper">
+	<div id="product-toolbar"></div>
+	<div >
+		<table id="product-grid">
+			<colgroup>
+				<col style="width:70px"/>
+				<col />
+				<col style="width:110px" />
+				<col style="width:110px" />
+				<col style="width:110px" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th data-field="Selected">Selected</th>
+					<th data-field="Name">Name</th>
+					<th data-field="Price">Price</th>
+					<th data-field="Quantity">Qty</th>
+					<th data-field="Amount">Amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>ON Gold Standard 5lb</td>
+					<td>3200.00</td>
+					<td>1</td>
+					<td>3200.00</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>BSN Syntha-6 5lb</td>
+					<td>2890.00</td>
+					<td>2</td>
+					<td>5780.00</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>Dymatize Fusion7 2lb</td>
+					<td>1750.00</td>
+					<td>1</td>
+					<td>1750.00</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>Dymatize Fusion7 2lb</td>
+					<td>1750.00</td>
+					<td>1</td>
+					<td>1750.00</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>Dymatize Fusion7 2lb</td>
+					<td>1750.00</td>
+					<td>1</td>
+					<td>1750.00</td>
+				</tr>
+			</tbody>		
+		</table>
+	</div>
+	<script>
+		$(document).ready(function () {
+			$("#product-grid").kendoGrid({
+				//dataSource: {
+				//	type: "json",
+				//	transport: {
+				//		read: "api/Product"
+				//	},
+				//	schema: {
+				//		model: {
+				//			fields: {
+				//				Selected: { type: "bool" },
+				//				Name: { type: "string" }								
+				//			}
+				//		}
+				//	},
+				//	pageSize: 20,
+				//	serverFiltering: false
+				//},
+				height: 700,
+				selectable: "single",
+				filterable: true,
+				groupable: false,
+				sortable: true,
+				pageable: {
+					refresh: true,
+					pageSizes: true,
+					buttonCount: 5
+				},
+				columns: [
+					{
+						field: "Selected",
+						title: "",
+						template: "<input type='checkbox' #= Selected == 1 ? checked='checked': checked='' # class='ob-paid'>", //class='ob-paid' #= Selected == 1 ? checked='checked' : ''
+						filterable: false,
+						width: 70
+					},
+					{
+						field: "Name",
+						title: "Product Name"
+					}, {
+						field: "Price",
+						title: "Price",
+						format: "${0:n2}",
+						filterable: false,
+						width: 150
+					}, {
+						field: "Quantity",
+						title: "Qty",
+						format: "{0:n0}",
+						filterable: false,
+						width: 150
+					}, {
+						field: "Amount",
+						filterable: false,
+						format: "{0:n2}",
+						width: 150
+					}
+				]
+			});
+
+			$("#product-toolbar").kendoToolBar({
+				items: [
+					{
+						type: "splitButton",
+						text: "Выделить все",
+						menuButtons: [
+							{ text: "Снять выделение" },
+							{ text: "Инвертировать" }
+						]
+					},
+					{ template: "<span style='width: 300px;' class='k-textbox k-space-right'><input type='search' id='searchbox' class='k-textbox' placeholder='Поиск'><a href='#' class='k-icon k-i-search'>&nbsp;</a></span>" },
+			{ type: "button", text: "Button" },
+			{ type: "button", text: "Toggle Button", togglable: true },
+			{
+				type: "splitButton",
+				text: "Insert",
+				menuButtons: [
+					{ text: "Insert above", icon: "insert-n" },
+					{ text: "Insert between", icon: "insert-m" },
+					{ text: "Insert below", icon: "insert-s" }
+				]
+			},
+			{ type: "separator" },
+			{ template: "<label>Format:</label>" },
+			{
+				template: "<input id='dropdown' style='width: 150px;' />",
+				overflow: "never"
+			},
+			{ type: "separator" },
+			{
+				type: "buttonGroup",
+				buttons: [
+					{ spriteCssClass: "k-tool-icon k-justifyLeft", text: "Left", togglable: true, group: "text-align" },
+					{ spriteCssClass: "k-tool-icon k-justifyCenter", text: "Center", togglable: true, group: "text-align" },
+					{ spriteCssClass: "k-tool-icon k-justifyRight", text: "Right", togglable: true, group: "text-align" }
+				]
+			},
+			{
+				type: "buttonGroup",
+				buttons: [
+					{ spriteCssClass: "k-tool-icon k-bold", text: "Bold", togglable: true, showText: "overflow" },
+					{ spriteCssClass: "k-tool-icon k-italic", text: "Italic", togglable: true, showText: "overflow" },
+					{ spriteCssClass: "k-tool-icon k-underline", text: "Underline", togglable: true, showText: "overflow" }
+				]
+			},
+			{
+				type: "button",
+				text: "Action",
+				overflow: "always"
+			},
+			{
+				type: "button",
+				text: "Another Action",
+				overflow: "always"
+			},
+			{
+				type: "button",
+				text: "Something else here",
+				overflow: "always"
+			}
+				]
+			});
+
+			$("#product-group-treeview").kendoTreeView();
+
+			$('#product-grid').on("change", ".ob-paid", function (e) {
+				var grid = $('#product-grid').data().kendoGrid;
+				var row = $(e.target).closest("tr");
+				var item = grid.dataItem(row);
+				item.set("Selected", $(e.target).is(":checked") ? 1 : 0);
+			});
+		});
+	</script>
+</div>

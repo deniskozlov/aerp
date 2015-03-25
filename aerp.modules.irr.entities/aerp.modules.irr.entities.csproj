@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B49305EB-ED83-47FC-9BBE-101562A1067E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>aerp.modules.irr.entities</RootNamespace>
+    <AssemblyName>aerp.modules.irr.entities</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\DynamicProperty.cs" />
+    <Compile Include="Attributes\DynamicPropertyEnumValue.cs" />
+    <Compile Include="Attributes\DynamicPropertySet.cs" />
+    <Compile Include="Attributes\DynamicPropertySetProperty.cs" />
+    <Compile Include="Attributes\DynamicPropertyType.cs" />
+    <Compile Include="Attributes\DynamicPropertyValue.cs" />
+    <Compile Include="EntityBaseWithRegistrator.cs" />
+    <Compile Include="Attributes\EntityType.cs" />
+    <Compile Include="Attributes\EntityTypeAvailableDynamicPropertySet.cs" />
+    <Compile Include="Attributes\EntityTypeDynamicProperty.cs" />
+    <Compile Include="Banking\Bank.cs" />
+    <Compile Include="Banking\BankAccount.cs" />
+    <Compile Include="Classification\Address.cs" />
+    <Compile Include="Classification\BusinessTypes.cs" />
+    <Compile Include="Classification\Contractor.cs" />
+    <Compile Include="Classification\Currency.cs" />
+    <Compile Include="Classification\CurrencyValue.cs" />
+    <Compile Include="Classification\Genders.cs" />
+    <Compile Include="Classification\MeasureUnit.cs" />
+    <Compile Include="Classification\SubjectAttribute.cs" />
+    <Compile Include="Classification\SubjectAttributeType.cs" />
+    <Compile Include="Classification\SubjectAttributeValue.cs" />
+    <Compile Include="Classification\VatRate.cs" />
+    <Compile Include="EntityBase.cs" />
+    <Compile Include="Manufacturing\Brand.cs" />
+    <Compile Include="Manufacturing\Manufacturer.cs" />
+    <Compile Include="Organization\CashRegister.cs" />
+    <Compile Include="Organization\Company.cs" />
+    <Compile Include="Organization\CompanyBankAccount.cs" />
+    <Compile Include="Organization\Department.cs" />
+    <Compile Include="Organization\Employee.cs" />
+    <Compile Include="Organization\Position.cs" />
+    <Compile Include="Organization\Store.cs" />
+    <Compile Include="Organization\Warehouse.cs" />
+    <Compile Include="Organization\WarehouseTypes.cs" />
+    <Compile Include="Pricing\PriceScheme.cs" />
+    <Compile Include="Pricing\PriceShcemeKinds.cs" />
+    <Compile Include="Pricing\ProductPrice.cs" />
+    <Compile Include="Production\CompositeSpecification.cs" />
+    <Compile Include="Production\Package.cs" />
+    <Compile Include="Production\PriceGroup.cs" />
+    <Compile Include="Production\Product.cs" />
+    <Compile Include="Production\ProductAttribute.cs" />
+    <Compile Include="Production\ProductAttributeValue.cs" />
+    <Compile Include="Production\ProductCharacteristic.cs" />
+    <Compile Include="Production\ProductGroup.cs" />
+    <Compile Include="Production\ProductKind.cs" />
+    <Compile Include="Production\ProductType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Supplies\Supplier.cs" />
+    <Compile Include="Supplies\SupplierBankAccount.cs" />
+    <Compile Include="Supplies\SupplierOfficialBrand.cs" />
+    <Compile Include="Supplies\SupplierPrice.cs" />
+    <Compile Include="Supplies\SupplierProduct.cs" />
+    <Compile Include="Supplies\SupplierSuppliedBrand.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
